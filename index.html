@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Local Ticket Booking - Home</title>
+    <link rel="stylesheet" href="css/styles.css">
+    </head>
+<body>
+    <h1><b>ONLINE LOCAL TICKET BOOKING</b></h1>
+    <div class="fullpage">
+        <div class="wrapper">
+            <h2>Welcome, User!</h2>
+            <div class="button-group">
+                <button class="btn" id="bookticket1">Book Ticket</button>
+                <button class="btn" id="showticket">Show Ticket</button>
+                <button class="btn" id="logout">Logout</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Handle button clicks
+        document.getElementById('bookticket1').addEventListener('click', () => {
+            window.location.href = 'bookticket.html'; // Redirect to book ticket page
+        });
+
+        document.getElementById('showticket').addEventListener('click', () => {
+            window.location.href = 'showticket.html'; // Redirect to show ticket page
+        });
+
+        document.getElementById('logout').addEventListener('click', () => {
+            // Clear login session
+            localStorage.removeItem('loginStatus');
+            alert('Logged out successfully!');
+            window.location.href = 'login.html'; // Redirect to the login page
+        });
+    </script>
+</body>
+</html>

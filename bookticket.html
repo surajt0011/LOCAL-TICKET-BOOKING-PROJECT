@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Ticket</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="bookticket">
+        <div class="wrapper">
+            <form id="inputbox">
+                <h2>Ticket Book</h2>
+                <div class="input-box">
+                    <input list="stations" id="source" placeholder="Enter Source Station" required>
+                </div>
+                <div class="input-box">
+                    <input list="stations" id="destination" placeholder="Enter Destination Station" required>
+                </div>
+                <datalist id="stations">
+                    <option value="PUNE"></option>
+                    <option value="SHIVAJINAGAR"></option>
+                    <option value="KHADKI"></option>
+                    <option value="DAPODI"></option>
+                    <option value="KASARWADI"></option>
+                    <option value="PIMPRI"></option>
+                    <option value="CHINCHWAD"></option>
+                    <option value="AKURDI"></option>
+                    <option value="DEHUROAD"></option>
+                    <option value="BHEGDEWADI"></option>
+                    <option value="GHORWADI"></option>
+                    <option value="TALEGAON"></option>
+                    <option value="VADGAON"></option>
+                    <option value="KANHE"></option>
+                    <option value="KAMSHET"></option>
+                    <option value="MALWALI"></option>
+                    <option value="LONAVALA"></option>
+                </datalist>
+                <div id="details">
+                    <input type="number" id="nop" placeholder="Number Of People" required>
+                    <input list="sr" id="srtype" placeholder="Journey Type" required>
+                    <datalist id="sr">
+                        <option value="SINGLE"></option>
+                        <option value="RETURN"></option>
+                    </datalist>
+                </div>
+                <button type="button" class="btn" id="process-payment">Processed To Payment</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('process-payment').addEventListener('click', () => {
+            const source = document.getElementById('source').value.trim();
+            const destination = document.getElementById('destination').value.trim();
+            const nop = document.getElementById('nop').value.trim();
+            const journeyType = document.getElementById('srtype').value.trim();
+
+            if (!source || !destination || !nop || !journeyType) {
+                alert('Please fill all fields before proceeding to payment!');
+                return;
+            }
+
+            localStorage.setItem('source', source);
+            localStorage.setItem('destination', destination);
+            localStorage.setItem('nop', nop);
+            localStorage.setItem('journeyType', journeyType);
+
+            window.location.href = 'payment.html';
+        });
+    </script>
+</body>
+</html>

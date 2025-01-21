@@ -1,0 +1,17 @@
+-- SQL script to create a database and table for storing user login details
+
+-- Create the database
+CREATE DATABASE local_ticket_booking;
+
+-- Use the database
+USE local_ticket_booking;
+
+-- Create the users table
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY, -- Unique ID for each user
+    name VARCHAR(100) NOT NULL,        -- User's name
+    email VARCHAR(150) NOT NULL UNIQUE, -- User's email address (must be unique)
+    password VARCHAR(255) NOT NULL,   -- User's hashed password
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP, -- Timestamp when the user was created
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP -- Timestamp when the user was last updated
+);

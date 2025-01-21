@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div id="payment">
+        <div class="wrapper">
+            <h2>Payment Details</h2>
+            <div id="ticket-details">
+                <p><b>Source:</b> <span id="source"></span></p>
+                <p><b>Destination:</b> <span id="destination"></span></p>
+                <p><b>Number of People:</b> <span id="nop"></span></p>
+                <p><b>Journey Type:</b> <span id="journeyType"></span></p>
+                <p><b>Ticket Price:</b> ₹<span id="price"></span></p>
+            </div>
+            <button type="button" class="btn" id="pay-now">Pay Now with Google Pay</button>
+        </div>
+    </div>
+
+    <script>
+        const source = localStorage.getItem('source');
+        const destination = localStorage.getItem('destination');
+        const nop = parseInt(localStorage.getItem('nop'), 10);
+        const journeyType = localStorage.getItem('journeyType');
+
+        const pricePerTicket = 10;
+        const totalPrice = journeyType === 'RETURN' ? nop * pricePerTicket * 2 : nop * pricePerTicket;
+
+        document.getElementById('source').innerText = source;
+        document.getElementById('destination').innerText = destination;
+        document.getElementById('nop').innerText = nop;
+        document.getElementById('journeyType').innerText = journeyType;
+        document.getElementById('price').innerText = totalPrice;
+
+        document.getElementById('pay-now').addEventListener('click', () => {
+            // Simulate payment success
+            alert('Payment successful!');
+            localStorage.setItem('paymentStatus', 'success');
+            window.location.href = 'showticket.html';
+        });
+    </script>
+</body>
+</html>

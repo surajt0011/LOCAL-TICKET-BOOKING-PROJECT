@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show Ticket</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h2>Your Ticket Details</h2>
+        <div id="ticket-details">
+            <p><strong>Source Station:</strong> <span id="source"></span></p>
+            <p><strong>Destination Station:</strong> <span id="destination"></span></p>
+            <p><strong>Number of People:</strong> <span id="nop"></span></p>
+            <p><strong>Journey Type:</strong> <span id="journey-type"></span></p>
+            <p><strong>Ticket Price:</strong> ₹<span id="ticket-price"></span></p>
+            <p><strong>Date:</strong> <span id="ticket-date"></span></p>
+        </div>
+        <button id="exit-button">Exit</button>
+    </div>
+
+    <script>
+        // Retrieve ticket details from localStorage
+        const source = localStorage.getItem('source');
+        const destination = localStorage.getItem('destination');
+        const nop = parseInt(localStorage.getItem('nop'), 10);
+        const journeyType = localStorage.getItem('journeyType');
+        const basePrice = 10; // Base price per ticket
+
+        // Calculate ticket price
+        let ticketPrice = basePrice * nop;
+        if (journeyType === 'RETURN') {
+            ticketPrice *= 2;
+        }
+
+        // Display ticket details
+        document.getElementById('source').textContent = source;
+        document.getElementById('destination').textContent = destination;
+        document.getElementById('nop').textContent = nop;
+        document.getElementById('journey-type').textContent = journeyType;
+        document.getElementById('ticket-price').textContent = ticketPrice;
+        document.getElementById('ticket-date').textContent = new Date().toLocaleDateString();
+
+        // Handle Exit button click
+        document.getElementById('exit-button').addEventListener('click', () => {
+        
+            window.location.href = 'index.html'; // Redirect to homepage
+        });
+    </script>
+</body>
+</html>
